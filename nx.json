@@ -14,7 +14,7 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "tasksRunnerOptions": { "default": { "options": { "useCloud": false } } },
+  "tasksRunnerOptions": { "default": { "options": { "useCloud": false, "cacheableOperations": ["build", "test", "lint", "or8n"] } } },
   "targetDefaults": { "e2e-ci--**/*": { "dependsOn": ["^build"] } },
   "nxCloudId": "68189d12c5bf9c39bd3339e7"
 }
