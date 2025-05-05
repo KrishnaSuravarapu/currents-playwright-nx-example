@@ -1,9 +1,8 @@
 import { CurrentsConfig } from '@currents/playwright';
 
 const config: CurrentsConfig = {
-  recordKey: '0E1SjVuESGNYCmwO',
-  projectId: '1BiNnG',
-  ciBuildId: 'ci-build-id'
+  recordKey: process.env.CURRENTS_RECORD_KEY,
+  projectId: process.env.CURRENTS_PROJECT_ID,
 };
 
 export default config;
