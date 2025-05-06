@@ -1,0 +1,49 @@
+# .github/workflows/ci.yml
+name: Nx-CI
+
+on: [push, workflow_dispatch]
+
+jobs:
+  nx-coordinator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install deps
+        run: npm ci
+      - name: Start Nx Cloud Agent Coordinator
+        run: npx nx-cloud start-ci-run --distribute
+      - name: Start Tests
+        run: npx nx run-many --target=e2e-ci --all
+
+  nx-agent-1:
+    needs: nx-coordinator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install deps
+        run: npm ci
+      - name: Run Nx Agent
+        run: npx nx-cloud agent
+
+  nx-agent-2:
+    needs: nx-coordinator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install deps
+        run: npm ci
+      - name: Run Nx Agent
+        run: npx nx-cloud agent
+

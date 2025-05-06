@@ -4,15 +4,12 @@
   "projectType": "application",
   "sourceRoot": "apps/e2e-03/src",
   "targets": {
-    "or8n": {
-      "executor": "nx:run-commands",
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
       "options": {
-        "config": "apps/e2e-03/playwright.config.ts",
-        "commands": [
-          {
-            "command": "npx pwc-p"
-          }
-        ]
+        "skipInstall": true,
+        "output": "{workspaceRoot}/playwright-report/{projectName}",
+        "config": "{projectRoot}/playwright.config.ts"
       }
     }
   }
