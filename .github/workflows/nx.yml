@@ -17,6 +17,8 @@ jobs:
       - name: Start Nx Cloud Agent Coordinator
         run: npx nx-cloud start-ci-run --distribute
       - name: Start Tests
+        env:
+            PLAYWRIGHT_HTML_OPEN: never
         run: npx nx run-many --target=e2e-ci --all
 
   nx-agent-1:
