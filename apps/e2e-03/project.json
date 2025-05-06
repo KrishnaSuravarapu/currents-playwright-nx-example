@@ -8,7 +8,7 @@
       "executor": "@nx/playwright:playwright",
       "options": {
         "skipInstall": true,
-        "output": "{workspaceRoot}/playwright-report/{projectName}",
+        "output": "{workspaceRoot}/playwright-reports",
         "config": "{projectRoot}/playwright.config.ts"
       }
     }
