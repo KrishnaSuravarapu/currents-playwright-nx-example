@@ -17,7 +17,7 @@ jobs:
       - name: Reset NX
         run: npx nx reset
       - name: Start Nx Cloud Agent Coordinator
-        run: npx nx-cloud start-ci-run --distribute
+        run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js"  --stop-agents-after="e2e-ci"
       - name: Start Tests
         env:
           PLAYWRIGHT_HTML_OPEN: never
