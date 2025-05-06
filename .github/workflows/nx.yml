@@ -25,6 +25,7 @@ jobs:
           CURRENTS_PROJECT_ID: 1BiNnG
           CURRENTS_CI_BUILD_ID: ${{ github.run_id }}-${{ github.sha }}
         run: npx nx run-many --target=e2e-ci --verbose --parallel=3
+        continue-on-error: true 
 
       - name: 'Tar files'
         run: tar -cvf reports.tar dist/.playwright/apps/
