@@ -1,14 +1,5 @@
 name: Run E2E Tests
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
-
 jobs:
   e2e_tests:
     runs-on: ubuntu-latest

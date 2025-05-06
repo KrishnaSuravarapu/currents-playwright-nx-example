@@ -25,3 +25,14 @@ jobs:
           CURRENTS_PROJECT_ID: 1BiNnG
           CURRENTS_CI_BUILD_ID: ${{ github.run_id }}-${{ github.sha }}
         run: npx nx run-many --target=e2e-ci --verbose --parallel=3
+      - name: Generate random name
+        id: vars
+        run: echo "random_name=playwright-report-$(uuidgen)" >> $GITHUB_OUTPUT
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.vars.outputs.random_name }}
+          path: dist/.playwright/apps/**/test_output/
+
